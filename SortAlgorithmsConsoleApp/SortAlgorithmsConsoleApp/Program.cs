@@ -1,4 +1,5 @@
-﻿using SortAlgorithmsConsoleApp.Basic;
+﻿using SortAlgorithmsConsoleApp.Base;
+using SortAlgorithmsConsoleApp.Basic;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -11,22 +12,22 @@ namespace SortAlgorithmsConsoleApp
     {
         static void Main()
         {
-            int[] array = GenerateIntArray(16);
+            int[] array = GenerateIntArray(10000);
 
             EvalPerformanceOfBubbleSort(array);
+            EvalPerformanceOfSelectionSort(array);
         }
 
         private static void EvalPerformanceOfBubbleSort(int[] array)
         {
             var bubble = new Bubble<int>(array.ToArray());
+            EvalPerformanceOfSortAlgorithm(bubble);
+        }
 
-            var sw = new Stopwatch();
-            sw.Start();
-            int[] sortedArray = bubble.Sort();
-            sw.Stop();
-
-            ThrowsIfArrayIsUnordered(sortedArray);
-            Console.WriteLine($"Ordered by Bubble Sort algorithm in {sw.Elapsed}.");
+        private static void EvalPerformanceOfSelectionSort(int[] array)
+        {
+            var selection = new Selection<int>(array.ToArray());
+            EvalPerformanceOfSortAlgorithm(selection);
         }
 
         #region Helper Methods
@@ -44,6 +45,23 @@ namespace SortAlgorithmsConsoleApp
             }
 
             return array;
+        }
+
+        static void EvalPerformanceOfSortAlgorithm<T>(SortAlgorithm<T> algorithm) where T : IComparable<T>
+        {
+            var sw = new Stopwatch();
+            sw.Start();
+            T[] sortedArray = algorithm.Sort();
+            sw.Stop();
+
+            ThrowsIfArrayIsUnordered(sortedArray);
+            ShowMessage(algorithm.GetType().Name, sw);
+        }
+
+        private static void ShowMessage(string algorithmName, Stopwatch sw)
+        {
+            int genericIndex = algorithmName.IndexOf('`');
+            Console.WriteLine($"Ordered by {algorithmName.Substring(0, genericIndex)}Sort algorithm in {sw.Elapsed}.");
         }
 
         static void ThrowsIfArrayIsUnordered<T>(T[] array) where T : IComparable<T>
