@@ -12,10 +12,11 @@ namespace SortAlgorithmsConsoleApp
     {
         static void Main()
         {
-            int[] array = GenerateIntArray(10000);
+            int[] array = GenerateIntArray(15000);
 
             EvalPerformanceOfBubbleSort(array);
             EvalPerformanceOfSelectionSort(array);
+            EvalPerformanceOfInsertionSort(array);
         }
 
         private static void EvalPerformanceOfBubbleSort(int[] array)
@@ -28,6 +29,12 @@ namespace SortAlgorithmsConsoleApp
         {
             var selection = new Selection<int>(array.ToArray());
             EvalPerformanceOfSortAlgorithm(selection);
+        }
+
+        private static void EvalPerformanceOfInsertionSort(int[] array)
+        {
+            var insertion = new Insertion<int>(array.ToArray());
+            EvalPerformanceOfSortAlgorithm(insertion);
         }
 
         #region Helper Methods
