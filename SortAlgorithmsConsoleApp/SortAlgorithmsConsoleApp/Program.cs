@@ -17,6 +17,7 @@ namespace SortAlgorithmsConsoleApp
             EvalPerformanceOfBubbleSort(array);
             EvalPerformanceOfSelectionSort(array);
             EvalPerformanceOfInsertionSort(array);
+            EvalPerformanceOfShellSort(array);            
         }
 
         private static void EvalPerformanceOfBubbleSort(int[] array)
@@ -35,6 +36,12 @@ namespace SortAlgorithmsConsoleApp
         {
             var insertion = new Insertion<int>(array.ToArray());
             EvalPerformanceOfSortAlgorithm(insertion);
+        }
+
+        private static void EvalPerformanceOfShellSort(int[] array)
+        {
+            var shell = new Shell<int>(array.ToArray());
+            EvalPerformanceOfSortAlgorithm(shell);
         }
 
         #region Helper Methods

@@ -45,6 +45,7 @@
     <Compile Include="Basic\Bubble.cs" />
     <Compile Include="Basic\Insertion.cs" />
     <Compile Include="Basic\Selection.cs" />
+    <Compile Include="Basic\Shell.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\SortAlgorithm.cs" />
