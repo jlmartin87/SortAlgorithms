@@ -1,4 +1,5 @@
-﻿using SortAlgorithmsConsoleApp.Base;
+﻿using SortAlgorithmsConsoleApp.Advanced;
+using SortAlgorithmsConsoleApp.Base;
 using SortAlgorithmsConsoleApp.Basic;
 using System;
 using System.Diagnostics;
@@ -17,7 +18,8 @@ namespace SortAlgorithmsConsoleApp
             EvalPerformanceOfBubbleSort(array);
             EvalPerformanceOfSelectionSort(array);
             EvalPerformanceOfInsertionSort(array);
-            EvalPerformanceOfShellSort(array);            
+            EvalPerformanceOfShellSort(array);
+            EvalPerformanceOfMergeSort(array);
         }
 
         private static void EvalPerformanceOfBubbleSort(int[] array)
@@ -42,6 +44,12 @@ namespace SortAlgorithmsConsoleApp
         {
             var shell = new Shell<int>(array.ToArray());
             EvalPerformanceOfSortAlgorithm(shell);
+        }
+
+        private static void EvalPerformanceOfMergeSort(int[] array)
+        {
+            var merge = new Merge<int>(array.ToArray());
+            EvalPerformanceOfSortAlgorithm(merge);
         }
 
         #region Helper Methods
