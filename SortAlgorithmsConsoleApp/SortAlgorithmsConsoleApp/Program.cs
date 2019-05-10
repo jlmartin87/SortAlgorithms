@@ -13,8 +13,6 @@ namespace SortAlgorithmsConsoleApp
     {
         static void Main()
         {
-            Console.WriteLine("Testing!");
-
             int[] array = GenerateIntArray(15000);
 
             EvalPerformanceOfBubbleSort(array);
